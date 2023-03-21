@@ -31,9 +31,10 @@ img {
 
 body {
   margin: auto;
+  padding: 2rem;
   display: flex;
   place-items: center;
-  min-width: 800px;
+  max-width: 700px;
   min-height: 100vh;
 }
 
@@ -45,3 +46,18 @@ main {
   padding: 1rem;
 }
 
+@media only screen and (max-width:799px) {
+  body {
+    margin: auto;
+    display: flex;
+    place-items: center;
+    max-width: 400px;
+    min-height: 100vh;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 15px;
+  }
+}
