@@ -1,4 +1,4 @@
-    import { useState } from "react";
+import { useState } from "react";
 
 const POKEMONS = [
     'Bulbasaur',
@@ -46,8 +46,11 @@ export default function Pokemon() {
 
         const { pokemon } = event.currentTarget;
 
-        if( pokemon.value.toLowerCase() === POKEMONS[MATCH]) {
+        if( pokemon.value.toLowerCase() === POKEMONS[MATCH].toLocaleLowerCase() ) {
             toggleWon(true);
+            alert('you won!');
+        } else {
+            alert('try again')
         }
     }
 
@@ -56,15 +59,23 @@ export default function Pokemon() {
             <img 
             height={512}
             width={512}
-            style={{imageRendering: 'pixelated', filter:'brightness(0) invert(1)'}}
+            style={{imageRendering: 'pixelated', filter: hasWon ? '' : 'brightness(0) invert(1)'}}
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
                 MATCH + 1
                 }.png`}
                 />
-                <form action="">
-                    <input type="text" />
-                    <button type="submit">Submit</button>
-                </form>
+                {hasWon ? (
+                    <button style={{width:'100%'}} onClick={() => location.reload()}>
+                        Play again
+                    </button>
+                ) : (
+                    <form onSubmit={handleSubmit}>
+                        <input name="pokemon" type="text" />
+                        <button type="submit">Submit</button>
+                    </form>
+                )}
         </div>
     );
 }
+
+//minuto 1.19.40
