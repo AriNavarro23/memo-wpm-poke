@@ -25,9 +25,7 @@ export default function WordsPerMinute() {
     const [time, setTime] = useState(0);
     //para guardar las palabras mal escritas
     const [wrongWords, setWrongWords] = useState<string[]>([]);
-
-   /* const [isMounted, setIsMounted] = useState(false);*/
-
+    //para saber si el juego comenzo y que no me alerte de que perdi 
     const [gameStarted, setGameStarted] = useState(false);
 
 
@@ -57,10 +55,6 @@ export default function WordsPerMinute() {
         setGameStarted(true);
     }
 
-   /* useEffect(() => {
-        setIsMounted(true);
-    }, []);
-*/
     //useEffect para escuchar el setTime, crear un timeOut, reduce de a 1" y lo reinicia
     //para que me diga si perdi al no llegar a 200 y si es = a 0 el tiempo
     //si no se dan las condiciones gane
@@ -74,7 +68,7 @@ export default function WordsPerMinute() {
         } else if ( time === 0 && gameStarted) {
             alert('¡Ganaste!');
         }
-    }, [, characterCount, time]);
+    }, [ characterCount, time]);
 
 
 
